@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Food & Drugs Office — RK Associates</title>
+
+        <meta
+            name="description"
+            content="Food & Drugs Office architectural project by RK Associates." />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+            rel="stylesheet" />
+
+        <style>
+    /* =========================================
+       RESET
+    ========================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #f4f3ef;
+      color: #171717;
+      line-height: 1.6;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    body.dark {
+      background: #111;
+      color: #f4f3ef;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+    }
+
+    .container {
+      width: min(1380px, calc(100% - 80px));
+      margin: auto;
+    }
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(244, 243, 239, .86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+
+      transition: .35s ease;
+    }
+
+    body.dark header {
+      background: rgba(17,17,17,.86);
+      border-color: rgba(255,255,255,.1);
+    }
+
+    .nav {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border: 2px solid currentColor;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      letter-spacing: -2px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-btn,
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      transition: .3s ease;
+    }
+
+    body.dark .theme-btn,
+    body.dark .menu-btn {
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .theme-btn:hover,
+    .menu-btn:hover {
+      background: #171717;
+      color: white;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: white;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.72) 0%,
+          rgba(0,0,0,.34) 50%,
+          rgba(0,0,0,.15) 100%
+        ),
+        url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=90")
+        center/cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.7),
+          transparent 55%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding-bottom: 100px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: .2em;
+    }
+
+    .hero-meta span:first-child {
+      color: #d5b27c;
+    }
+
+    .hero-title {
+      max-width: 950px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(55px, 8vw, 125px);
+      line-height: .9;
+      font-weight: 500;
+      letter-spacing: -.055em;
+    }
+
+    .hero-bottom {
+      margin-top: 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+    }
+
+    .hero-description {
+      max-width: 500px;
+      font-size: 15px;
+      color: rgba(255,255,255,.78);
+    }
+
+    .scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: .2em;
+    }
+
+    .scroll-line {
+      width: 70px;
+      height: 1px;
+      background: rgba(255,255,255,.6);
+    }
+
+    /* =========================================
+       PROJECT INTRO
+    ========================================= */
+
+    .intro {
+      padding: 150px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 11px;
+      color: #a17b45;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .intro h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .intro-text {
+      font-size: 19px;
+      color: #646464;
+      max-width: 650px;
+    }
+
+    body.dark .intro-text {
+      color: #aaa;
+    }
+
+    .project-data {
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(0,0,0,.15);
+    }
+
+    body.dark .project-data {
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .data-item {
+      padding: 25px 20px 25px 0;
+      border-right: 1px solid rgba(0,0,0,.15);
+    }
+
+    body.dark .data-item {
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .data-item:last-child {
+      border-right: 0;
+      padding-left: 20px;
+    }
+
+    .data-label {
+      display: block;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: .15em;
+      color: #888;
+      margin-bottom: 7px;
+    }
+
+    .data-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       IMAGE SHOWCASE
+    ========================================= */
+
+    .showcase {
+      padding-bottom: 150px;
+    }
+
+    .large-image {
+      height: 720px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .large-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .large-image:hover img {
+      transform: scale(1.045);
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      right: 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+
+    /* =========================================
+       FEATURED PROJECTS
+    ========================================= */
+
+    .featured {
+      padding: 120px 0 150px;
+      background: #1a1a19;
+      color: white;
+    }
+
+    .featured-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 65px;
+    }
+
+    .featured-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(45px, 6vw, 82px);
+      line-height: .95;
+      font-weight: 500;
+    }
+
+    .featured-count {
+      color: #888;
+      font-size: 12px;
+      letter-spacing: .15em;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      background: #292927;
+      cursor: pointer;
+    }
+
+    .project-card:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    .project-card-image {
+      height: 100%;
+      min-height: 280px;
+      overflow: hidden;
+    }
+
+    .project-card img {
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      transition: transform .8s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 30%,
+        rgba(0,0,0,.85)
+      );
+    }
+
+    .project-info {
+      position: absolute;
+      z-index: 2;
+      bottom: 28px;
+      left: 28px;
+      right: 28px;
+    }
+
+    .project-number {
+      color: #d5b27c;
+      font-size: 10px;
+      letter-spacing: .15em;
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      line-height: 1.05;
+    }
+
+    /* =========================================
+       STUDIO CTA
+    ========================================= */
+
+    .cta {
+      padding: 170px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+
+    .cta h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: clamp(50px, 7vw, 100px);
+      line-height: .9;
+      letter-spacing: -.05em;
+    }
+
+    .cta-right {
+      padding-bottom: 8px;
+    }
+
+    .cta-right p {
+      color: #777;
+      max-width: 420px;
+      margin-bottom: 30px;
+    }
+
+    body.dark .cta-right p {
+      color: #aaa;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 30px;
+      padding: 17px 0;
+      border-bottom: 1px solid currentColor;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .cta-button span {
+      transition: transform .3s ease;
+    }
+
+    .cta-button:hover span {
+      transform: translateX(8px);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      background: #111;
+      color: white;
+      padding: 85px 0 35px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 70px;
+      padding-bottom: 80px;
+    }
+
+    .footer-brand h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      color: #888;
+      max-width: 410px;
+      font-size: 14px;
+    }
+
+    .footer-heading {
+      font-size: 11px;
+      color: #888;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: #d5b27c;
+    }
+
+    .footer-address {
+      color: #bbb;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 330px;
+    }
+
+    .footer-contact {
+      margin-top: 22px;
+      display: grid;
+      gap: 7px;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 11px;
+    }
+
+    /* =========================================
+       REVEAL ANIMATION
+    ========================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    .mobile-menu {
+      position: fixed;
+      inset: 86px 0 0;
+      background: #171717;
+      color: white;
+      z-index: 999;
+      padding: 50px 40px;
+      transform: translateX(100%);
+      transition: transform .4s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: grid;
+      gap: 22px;
+    }
+
+    .mobile-menu a {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1000px) {
+
+      .container {
+        width: min(100% - 45px, 1380px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .hero-title {
+        font-size: clamp(55px, 12vw, 95px);
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .large-image {
+        height: 550px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .project-card:nth-child(1) {
+        grid-row: auto;
+      }
+
+      .cta-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: calc(100% - 35px);
+      }
+
+      .nav {
+        height: 74px;
+      }
+
+      .mobile-menu {
+        inset: 74px 0 0;
+        padding: 40px 25px;
+      }
+
+      .mobile-menu a {
+        font-size: 34px;
+      }
+
+      .hero {
+        min-height: 850px;
+      }
+
+      .hero-content {
+        padding-bottom: 65px;
+      }
+
+      .hero-title {
+        font-size: 57px;
+      }
+
+      .hero-bottom {
+        display: block;
+        margin-top: 35px;
+      }
+
+      .scroll-indicator {
+        margin-top: 30px;
+      }
+
+      .intro {
+        padding: 90px 0;
+      }
+
+      .project-data {
+        grid-template-columns: 1fr;
+      }
+
+      .data-item,
+      .data-item:last-child {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0,0,0,.15);
+        padding: 20px 0;
+      }
+
+      body.dark .data-item,
+      body.dark .data-item:last-child {
+        border-color: rgba(255,255,255,.15);
+      }
+
+      .showcase {
+        padding-bottom: 90px;
+      }
+
+      .large-image {
+        height: 420px;
+      }
+
+      .featured {
+        padding: 90px 0;
+      }
+
+      .featured-head {
+        display: block;
+      }
+
+      .featured-count {
+        display: block;
+        margin-top: 20px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card-image,
+      .project-card img {
+        height: 400px;
+      }
+
+      .cta {
+        padding: 100px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        display: block;
+      }
+
+      .footer-bottom div + div {
+        margin-top: 10px;
+      }
+    }
+  </style>
+    </head>
+
+    <body>
+
+        <!-- =========================================
+       HEADER
+  ========================================== -->
+
+        <header>
+            <div class="container nav">
+
+                <a href="#" class="logo">
+                    <div class="logo-mark">RK</div>
+                    <div class="logo-text">Associates</div>
+                </a>
+
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#studio">Our Studio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-actions">
+                    <button
+                        class="theme-btn"
+                        id="themeToggle"
+                        aria-label="Toggle theme">
+                        ☼
+                    </button>
+
+                    <button
+                        class="menu-btn"
+                        id="menuToggle"
+                        aria-label="Open menu">
+                        ☰
+                    </button>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- =========================================
+       MOBILE MENU
+  ========================================== -->
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#studio">Studio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- =========================================
+       HERO
+  ========================================== -->
+
+        <main>
+
+            <section class="hero" id="home">
+
+                <div class="container hero-content reveal">
+
+                    <div class="hero-meta">
+                        <span>Proposal</span>
+                        <span>•</span>
+                        <span>Architecture</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Food &<br>
+                        Drugs Office
+                    </h1>
+
+                    <div class="hero-bottom">
+
+                        <p class="hero-description">
+                            A contemporary institutional architecture proposal
+                            designed around clarity, functionality and a strong
+                            civic presence.
+                        </p>
+
+                        <div class="scroll-indicator">
+                            <span class="scroll-line"></span>
+                            Scroll to explore
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+         INTRODUCTION
+    ========================================== -->
+
+            <section class="intro" id="about">
+
+                <div class="container intro-grid">
+
+                    <div class="reveal">
+                        <div class="eyebrow">01 — The Project</div>
+
+                        <h2>
+                            Architecture<br>
+                            with purpose.
+                        </h2>
+                    </div>
+
+                    <div class="reveal">
+
+                        <p class="intro-text">
+                            The Food & Drugs Office project explores a modern
+                            institutional environment where architecture,
+                            movement and natural light come together to create
+                            a functional yet memorable public building.
+                        </p>
+
+                        <div class="project-data">
+
+                            <div class="data-item">
+                                <span class="data-label">Project</span>
+                                <span class="data-value">
+                                    Food & Drugs Office
+                                </span>
+                            </div>
+
+                            <div class="data-item">
+                                <span class="data-label">Type</span>
+                                <span class="data-value">
+                                    Institutional
+                                </span>
+                            </div>
+
+                            <div class="data-item">
+                                <span class="data-label">Status</span>
+                                <span class="data-value">
+                                    Proposal
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+         IMAGE
+    ========================================== -->
+
+            <section class="showcase">
+
+                <div class="container">
+
+                    <div class="large-image reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=90"
+                            alt="Contemporary architectural interior" />
+
+                        <div class="image-caption">
+                            <span>RK Associates</span>
+                            <span>Food & Drugs Office</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+         FEATURED PROJECTS
+    ========================================== -->
+
+            <section class="featured" id="projects">
+
+                <div class="container">
+
+                    <div class="featured-head reveal">
+
+                        <div>
+                            <div class="eyebrow">
+                                Selected Work
+                            </div>
+
+                            <h2 class="featured-title">
+                                Featured<br>
+                                Projects
+                            </h2>
+                        </div>
+
+                        <div class="featured-count">
+                            08 — Projects
+                        </div>
+
+                    </div>
+
+                    <div class="project-grid">
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85"
+                                    alt="Administrative building" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">01</div>
+                                <div class="project-name">
+                                    Administrative Building Ratnagiri
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=85"
+                                    alt="Modern architectural project" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">02</div>
+                                <div class="project-name">
+                                    Krida Prabodhini
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+                                    alt="School architecture" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">03</div>
+                                <div class="project-name">
+                                    JK International School
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+                                    alt="Modern architecture" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">04</div>
+                                <div class="project-name">
+                                    Mirya Mandar
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85"
+                                    alt="Municipal architecture" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">05</div>
+                                <div class="project-name">
+                                    Kolhapur Municipal Corporation
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article class="project-card reveal">
+
+                            <div class="project-card-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85"
+                                    alt="Government architecture" />
+                            </div>
+
+                            <div class="project-info">
+                                <div class="project-number">06</div>
+                                <div class="project-name">
+                                    Collecter Office DPDC Hall
+                                </div>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+         SERVICES / STUDIO
+    ========================================== -->
+
+            <section class="cta" id="studio">
+
+                <div class="container cta-inner">
+
+                    <div class="reveal">
+                        <div class="eyebrow">02 — Our Studio</div>
+
+                        <h2>
+                            Let's build<br>
+                            something<br>
+                            great.
+                        </h2>
+                    </div>
+
+                    <div class="cta-right reveal">
+
+                        <p>
+                            Started in 1992 with a vision to redefine
+                            architecture and planning, RK Associates continues
+                            to create meaningful architectural environments.
+                        </p>
+
+                        <a
+                            href="mailto:architects@rkassociates333.com"
+                            class="cta-button">
+                            Start a conversation
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+        <footer id="contact">
+
+            <div class="container">
+
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+
+                        <h3>RK Associates</h3>
+
+                        <p>
+                            Architecture, planning and interior design
+                            studio creating thoughtful spaces since 1992.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <div class="footer-heading">
+                            Information
+                        </div>
+
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#studio">Our Studio</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+
+                    </div>
+
+                    <div>
+
+                        <div class="footer-heading">
+                            Visit Us
+                        </div>
+
+                        <p class="footer-address">
+                            Vasant Prestige 4th Floor,<br>
+                            Panch Banglow Area,<br>
+                            Shahupuri, Kolhapur 416001,<br>
+                            Maharashtra, India
+                        </p>
+
+                        <div class="footer-contact">
+
+                            <a href="tel:+919158106039">
+                                +91 9158106039
+                            </a>
+
+                            <a href="mailto:architects@rkassociates333.com">
+                                architects@rkassociates333.com
+                            </a>
+
+                            <a href="mailto:accounts@rkassociates333.com">
+                                accounts@rkassociates333.com
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+
+                    <div>
+                        © 2026 RK Associates. All Rights Reserved.
+                    </div>
+
+                    <div>
+                        Architecture · Interior · Planning
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+        <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+        <script>
+
+    /* -----------------------------------------
+       MOBILE MENU
+    ----------------------------------------- */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+
+      mobileMenu.classList.toggle("open");
+
+      menuToggle.textContent =
+        mobileMenu.classList.contains("open")
+          ? "×"
+          : "☰";
+
+    });
+
+
+    document.querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("open");
+          menuToggle.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* -----------------------------------------
+       DARK / LIGHT MODE
+    ----------------------------------------- */
+
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    themeToggle.addEventListener("click", () => {
+
+      document.body.classList.toggle("dark");
+
+      themeToggle.textContent =
+        document.body.classList.contains("dark")
+          ? "☾"
+          : "☼";
+
+    });
+
+
+    /* -----------------------------------------
+       SCROLL REVEAL
+    ----------------------------------------- */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* -----------------------------------------
+       HEADER SCROLL EFFECT
+    ----------------------------------------- */
+
+    const header =
+      document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+
+        header.style.boxShadow =
+          "0 8px 30px rgba(0,0,0,.06)";
+
+      } else {
+
+        header.style.boxShadow = "none";
+
+      }
+
+    });
+
+
+    /* -----------------------------------------
+       PARALLAX HERO
+    ----------------------------------------- */
+
+    const hero = document.querySelector(".hero");
+
+    window.addEventListener("scroll", () => {
+
+      const scroll =
+        window.scrollY;
+
+      if (scroll < window.innerHeight) {
+
+        hero.style.backgroundPosition =
+          `center ${scroll * 0.35}px`;
+
+      }
+
+    });
+
+
+    /* -----------------------------------------
+       PROJECT CARD CLICK EFFECT
+    ----------------------------------------- */
+
+    document.querySelectorAll(".project-card")
+      .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+          card.animate(
+            [
+              { transform: "scale(1)" },
+              { transform: "scale(.98)" },
+              { transform: "scale(1)" }
+            ],
+            {
+              duration: 280,
+              easing: "ease-out"
+            }
+          );
+
+        });
+
+      });
+
+  </script>
+
+    </body>
+</html>
